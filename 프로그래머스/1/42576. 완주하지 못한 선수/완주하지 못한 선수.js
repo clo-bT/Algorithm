@@ -1,17 +1,12 @@
 function solution(participant, completion) {
-    const participantCount = new Map();
-
+    const countMap = new Map();
     participant.forEach(name => {
-        participantCount.set(name, (participantCount.get(name) || 0) + 1);
-    });
-
+        countMap.set(name, (countMap.get(name) || 0) + 1);
+    })
     completion.forEach(name => {
-        if (participantCount.has(name)) {
-            participantCount.set(name, participantCount.get(name) - 1);
-        }
-    });
-
-    for (const [name, count] of participantCount.entries()) {
+        countMap.set(name, countMap.get(name) - 1);
+    })
+    for (const [name, count] of countMap.entries()) {
         if (count > 0) {
             return name;
         }
