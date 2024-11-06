@@ -1,23 +1,11 @@
 function solution(brown, yellow) {
-    let answer = [];
-    const amount = brown + yellow;
-    const result = yaksoo(amount);
-    if (result.length == 1) {
-        return result[0];
-    }
-    result.forEach(([a, b]) => {
-            if ((a-2) * (b-2) == yellow) {
-                answer.push([a,b])
+    const total = brown + yellow;
+    for (let i = 3; i <= Math.sqrt(total); i++) {
+        if (total % i === 0) {
+            const a = total / i;
+            if ((a - 2) * (i - 2) === yellow) {
+                return [a, i];
             }
-        })
-    return answer[0];
-}
-function yaksoo(num) {
-    let arr = [];
-    for (let i = 3; i <= Math.sqrt(num) ; i++) {
-        if (num % i === 0) {
-            arr.push([num/i, i]);
         }
     }
-    return arr;
 }
