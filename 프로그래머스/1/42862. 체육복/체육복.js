@@ -1,27 +1,25 @@
 function solution(n, lost, reserve) {
-    let answer = n - lost.length;
-    
-    let filterLost = lost.filter((l) => !reserve.includes(l));
-    let filterReserve = reserve.filter((r) => !lost.includes(r));
-    answer += lost.length - filterLost.length;
-    
-    filterLost.sort((a, b) => a - b);
-    
-    
-    filterLost.forEach((l) => {
-        if (filterReserve.length === 0) {
-            return;
+    const students = {};
+    let answer = 0;
+    for(let i = 1; i <= n; i++){
+        students[i] = 1;
+    }
+    lost.forEach(number => students[number] -= 1);
+    reserve.forEach(number => students[number] += 1);
+
+    for(let i = 1; i <= n; i++){
+        if(students[i] === 2 && students[i-1] === 0){
+                students[i-1]++;
+                students[i]--;
+        } else if(students[i] === 2 && students[i+1] === 0){
+                students[i+1]++;
+                students[i]--;
         }
-        
-        if (filterReserve.includes(l-1)) {
-            filterReserve = filterReserve.filter((r) => r !== l - 1);
+    }
+    for(let key in students){
+        if(students[key] >= 1){
             answer++;
         }
-        else if(filterReserve.includes(l+1)) {
-            filterReserve = filterReserve.filter((r) => r !== l + 1);
-            answer++;
-        }
-        
-    })
+    }
     return answer;
 }
