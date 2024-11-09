@@ -1,9 +1,7 @@
 function solution(n, lost, reserve) {
-    const students = {};
+    const students = Array(n+1).fill(1);
     let answer = 0;
-    for(let i = 1; i <= n; i++){
-        students[i] = 1;
-    }
+
     lost.forEach(number => students[number] -= 1);
     reserve.forEach(number => students[number] += 1);
 
@@ -16,10 +14,6 @@ function solution(n, lost, reserve) {
                 students[i]--;
         }
     }
-    for(let key in students){
-        if(students[key] >= 1){
-            answer++;
-        }
-    }
+    answer = students.filter(v => v >= 1).length - 1
     return answer;
 }
