@@ -8,8 +8,7 @@ function solution(name) {
 
         let nextIndex = i + 1;
 
-        while (nextIndex < name.length && 
-               name.charCodeAt(nextIndex) - 'A'.charCodeAt(0) === 0) {
+        while (nextIndex < name.length && name[nextIndex] === 'A') {
           nextIndex += 1;
         }
         n = Math.min(
