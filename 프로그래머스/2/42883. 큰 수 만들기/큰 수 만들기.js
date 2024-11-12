@@ -12,5 +12,5 @@ function solution(number, k) {
         stack.push(current);
     }
     
-    return stack.slice(0, stack.length - k).join('');
+    return stack.slice(0, number.length - k).join('');
 }
