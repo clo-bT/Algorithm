@@ -1,15 +1,16 @@
-def solution(n, times):
-    left, right = 1, max(times) * n
-    answer = right
+import math
 
+def solution(n, times):
+    answer = 0
+    left, right = 1, max(times) * n
     while left <= right:
         mid = (left + right) // 2
-        total = sum(mid // time for time in times)
-        
-        if total >= n:
+        tmp = 0
+        for time in times:
+            tmp += math.floor(mid/time)
+        if tmp >= n:
             answer = mid
             right = mid - 1
-        else:
+        else :
             left = mid + 1
-
     return answer
