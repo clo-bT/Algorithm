@@ -1,5 +1,5 @@
 from itertools import combinations, product
-from collections import defaultdict
+from collections import Counter
 
 def solution(dice):
     n = len(dice)
@@ -15,14 +15,8 @@ def solution(dice):
         a_dice = [dice[i] for i in a_indices]
         b_dice = [dice[i] for i in b_indices]
         
-        a_sum_freq = defaultdict(int)
-        b_sum_freq = defaultdict(int)
-        
-        for a in product(*a_dice):
-            a_sum_freq[sum(a)] += 1
-        
-        for b in product(*b_dice):
-            b_sum_freq[sum(b)] += 1
+        a_sum_freq = Counter(sum(a) for a in product(*a_dice))
+        b_sum_freq = Counter(sum(b) for b in product(*b_dice))
         
         win, lose = 0, 0
         total_cases = 0
