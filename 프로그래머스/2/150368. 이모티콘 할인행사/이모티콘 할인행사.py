@@ -1,9 +1,10 @@
 def solution(users, emoticons):
     discountRates = [10, 20, 30, 40]  # 할인율
     answer = [0, 0]  # [가입자 수, 매출]
+    n = len(emoticons)
 
     def dfs(idx, discounts):
-        if idx == len(emoticons):
+        if idx == n:
             subscribers = 0
             totalPrice = 0
 
@@ -28,6 +29,6 @@ def solution(users, emoticons):
             discounts[idx] = rate
             dfs(idx + 1, discounts)
 
-    dfs(0, [0] * len(emoticons))
+    dfs(0, [0] * n)
     
     return answer
