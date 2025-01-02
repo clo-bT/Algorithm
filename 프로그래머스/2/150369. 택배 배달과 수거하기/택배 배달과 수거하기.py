@@ -6,9 +6,10 @@ def solution(cap, n, deliveries, pickups):
         delivery += deliveries[i]
         pickup += pickups[i]
         
-        while delivery > 0 or pickup > 0: 
+        while delivery > 0 or pickup > 0:
+            # 한 번에 처리할 수 있는 양을 빼고, 음수로 가는 것 방지
             delivery -= cap
             pickup -= cap
-            answer += (i+1) * 2
-    
+            answer += (i + 1) * 2
+            
     return answer
