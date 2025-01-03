@@ -29,17 +29,12 @@ def solution(dice):
                 elif a_sum < b_sum:
                     lose += a_count * b_count
         
-        draw = total_cases - win - lose
-        win_rate = win / total_cases if total_cases > 0 else 0
-        lose_rate = lose / total_cases if total_cases > 0 else 0
+        win_rate = win / total_cases
+        lose_rate = lose / total_cases
         
-        if win_rate > lose_rate:
-            if win_rate > max_rate:
-                max_rate = win_rate
-                answer = sorted(a_indices)
-        else:
-            if lose_rate > max_rate:
-                max_rate = lose_rate
-                answer = sorted(b_indices)
+        if win_rate > max_rate:
+            max_rate = win_rate
+            answer = sorted(a_indices)
+
 
     return [i + 1 for i in answer]
