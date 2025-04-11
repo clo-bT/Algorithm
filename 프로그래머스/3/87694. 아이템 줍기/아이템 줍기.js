@@ -1,6 +1,6 @@
 function solution(rectangle, characterX, characterY, itemX, itemY) {
-    const SIZE = 102;
-    const map = Array.from(Array(SIZE), () => Array(SIZE).fill(0));
+    const size = 102;
+    const map = Array.from(Array(size), () => Array(size).fill(0));
 
     // 좌표를 2배로
     rectangle.forEach(([x1, y1, x2, y2]) => {
@@ -20,7 +20,7 @@ function solution(rectangle, characterX, characterY, itemX, itemY) {
         }
     });
 
-    const visited = Array.from(Array(SIZE), () => Array(SIZE).fill(false));
+    const visited = Array.from(Array(size), () => Array(size).fill(false));
     const dx = [0, 1, 0, -1];
     const dy = [1, 0, -1, 0];
 
@@ -39,8 +39,8 @@ function solution(rectangle, characterX, characterY, itemX, itemY) {
             const ny = y + dy[i];
 
             if (
-                nx >= 0 && nx < SIZE &&
-                ny >= 0 && ny < SIZE &&
+                nx >= 0 && nx < size &&
+                ny >= 0 && ny < size &&
                 !visited[nx][ny] &&
                 map[nx][ny] === 1
             ) {
